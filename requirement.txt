@@ -1,2 +1,0 @@
-pip install pdfminer.six
-pip3 install pdfminer3k
