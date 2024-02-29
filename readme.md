@@ -2,17 +2,19 @@
 
 ```
 root
-│   pdf2txt.py
-│	requirements.txt
+├───pdf2txt.py
+├───requirements.txt
 │
 ├───dataset
-│       ├───pdf
-│           │   第一章.pdf
-│               ...
-│       ├───txt
-│           │   第一章.txt
-│               ...
-│
+│	├───pdf
+│		├───第一章.pdf
+│			...
+│	├───txt
+│		├───第一章.txt
+│			...
+├───DeepKE
+│	├───bert-base-chinese
+│		...
 ```
 
 ## 环境
@@ -23,12 +25,75 @@ pdfminer3k==1.3.4
 
 ## 步骤
 
-1. 安装pdfminer
+### 配置环境
+
+1. 下载基本代码
+
+```
+git clone https://github.com/yxyuanxiao/knowledge-graph.git
+```
+
+2. 使用`Anaconda`创建一个虚拟环境
+```
+conda create -n deepke python=3.8
+
+conda activate deepke
+```
+
+
+3. 安装pdfminer
 
 ```
 pip install pdfminer.six
 pip3 install pdfminer3k
 ```
 
-2. 首先在`./dataset/pdf/知识图谱方法、实践及应用_副本.pdf`中导出所需章节，修改`pdf2txt.py`中`filename`，运行`pdf2txt.py`，可以在`./dataset/txt`中获得纯文本格式数据集。
-3. 
+4. 进入`DeepKE`目录
+
+```
+cd ./knowledge-graph/DeepKE/
+```
+
+5. 安装DeepKE
+
+```
+pip install -r requirements.txt
+python setup.py install
+python setup.py develop
+```
+
+6. 下载[bert-base-chinese](https://huggingface.co/google-bert/bert-base-chinese/tree/main)，至少下载`config.json, pytorch_model.bin, tokenizer.json, tokenizer_config.json, vocab.txt`，将五个文件放入一个`bert-base-chinese`文件夹中，将`bert-base-chinese`放入`DeepKE`中，保证文件结构为
+
+```
+root
+├───DeepKE
+│	├───bert-base-chinese
+│		├───config.json
+│		├───pytorch_model.bin
+│		├───tokenizer.json
+│		├───tokenizer_config.json
+│		├───vocab.txt
+```
+
+7. 设置模型路径。打开文件`/knowledge-graph/DeepKE/example/ner/standard/conf/hydra/model/bert.yaml`，将`bert_model`参数改成`bert-base-chinese`的**绝对路径**，打开文件`/home/yx/knowledge-graph/DeepKE/example/re/standard/conf/model/lm.yaml` ，将`lm_file`参数改成`bert-base-chinese`的**绝对路径**
+
+### 测试环境
+
+1. 输入任务目录
+
+```
+cd DeepKE/example/re/standard
+```
+
+2. 下载数据集
+
+```
+wget 120.27.214.45/Data/re/standard/data.tar.gz
+tar -xzvf data.tar.gz
+```
+
+3. 训练
+
+```
+python run.py
+```
