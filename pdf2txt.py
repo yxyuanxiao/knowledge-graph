@@ -14,7 +14,7 @@ if not os.path.exists(save_path):
     os.makedirs(save_path)
 txt_path = os.path.join(save_path, txt_filename)
 
-with open(pdf_path, 'rb') as file, open(txt_path, 'w') as txt:
+with open(pdf_path, 'rb') as file, open(txt_path, 'w', encoding='utf-8') as txt:
     resource_manager = PDFResourceManager()
     output = TextConverter(resource_manager, txt, laparams=LAParams())
     interpreter = PDFPageInterpreter(resource_manager, output)
