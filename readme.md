@@ -75,7 +75,39 @@ root
 │		├───vocab.txt
 ```
 
-7. 设置模型路径。打开文件`/knowledge-graph/DeepKE/example/ner/standard/conf/hydra/model/bert.yaml`，将`bert_model`参数改成`bert-base-chinese`的**绝对路径**，打开文件`/home/yx/knowledge-graph/DeepKE/example/re/standard/conf/model/lm.yaml` ，将`lm_file`参数改成`bert-base-chinese`的**绝对路径**
+7. 设置模型路径。打开文件`/knowledge-graph/DeepKE/example/ner/standard/conf/hydra/model/bert.yaml`，将`bert_model`参数改成`bert-base-chinese`的**绝对路径**，打开文件`/knowledge-graph/DeepKE/example/re/standard/conf/model/lm.yaml` ，将`lm_file`参数改成`bert-base-chinese`的**绝对路径**
+
+⚠️⚠️RTX3090及以上显卡会出现的问题：
+
+遇到如下报错
+
+```
+RuntimeError: CUDA error: no kernel image is available for execution on the device
+CUDA kernel errors might be asynchronously reported at some other API call,so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1.
+```
+
+请在终端中输入
+
+```
+python
+import torch; print(torch.cuda.get_device_capability())
+```
+
+若出现如下警告
+
+```
+NVIDIA GeForce RTX 3090 with CUDA capability sm_86 is not compatible with the current PyTorch installation.
+The current PyTorch install supports CUDA capabilities sm_37 sm_50 sm_60 sm_70.
+If you want to use the NVIDIA GeForce RTX 3090 GPU with PyTorch, please check the instructions at https://pytorch.org/get-started/locally/
+```
+
+则是显卡的算力太高而pytroch的版本太低，则需要卸载pytorch重新安装新版本
+
+```
+pip uninstall torch
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+```
 
 ### 测试环境
 
