@@ -6,6 +6,9 @@ root
 ├───requirements.txt
 │
 ├───dataset
+│ ├───format_txt
+│		├───1.txt
+│			...
 │	├───pdf
 │		├───第一章.pdf
 │			...
