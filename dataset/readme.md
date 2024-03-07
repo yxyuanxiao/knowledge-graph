@@ -4,69 +4,32 @@
 
 ⚠️请使用[format_txt文件夹](./format_txt/)中的句子完成微调数据集。
 
+需要1000+以上的数据进行微调，因此每章需要100+以上条语句数据
 
-## NER微调数据集
+分工：愿篠1，Lu23，夜壶45，祓晓67，吉祥物89
 
-首先需要定义一些类（参考上学期实验一中定义的 Class），比如
+## 抽取三元组
 
-```
-"人物", "地理位置", "组织机构" ...
-```
+首先抽取句子中的三元组信息
 
-需要大家商量一下，找出所有的类，然后对于每个类，在每章里面找到5句话，这些句子中带有这个实例
-
-比如我定义知识工程中知识点中的类：术语，项目（我暂时想到两个，还需要补充/细分），对于这样几句话
+格式：（head_type和tail_type请暂时置为空）
 
 ```
-1. 知识图谱是一种用图模型来描述知识和建模世界万物之间的关联关系的技术方法[1]。
-2. 例如，WordNet[23]是典型的语义网络，它定义了名词、 动词、形容词和副词之间的语义关系。
+{"text": "...", "relation": [{"head": "...", "head_type": "", "relation": "...", "tail": "...", "tail_type": " "}, {"head": "...", "head_type": " ", "relation": "...", "tail": "...", "tail_type": " "}, ...]}
 ```
 
-他们构建的NER数据集是这样
-
-把类放入schema.json文件
+例如对于这样一句话
 
 ```
-["术语", "项目"]
+{"text": "知识图谱是一种用图模型来描述知识和建模世界万物之间的关联关系的技术方法[1]。"}
 ```
 
-对于每个句子，放入sample.json文件
+中存在一个三元关系：知识图谱 是 技术方法
+
+那么该语句构建的数据集为
 
 ```
-{"text": "知识图谱是一种用图模型来描述知识和建模世界万物之间的关联关系的技术方法[1]", "entity": [{"entity": "知识图谱", "entity_type": "术语"}, {"entity": "技术方法", "entity_type": "术语"}]}
-{"text": "例如，WordNet[23]是典型的语义网络，它定义了名词、 动词、形容词和副词之间的语义关系。", "entity": [{"entity": "WordNet", "entity_type": "项目"}, {"entity": "语义网络", "entity_type": "术语"}]}
+{"text": "知识图谱是一种用图模型来描述知识和建模世界万物之间的关联关系的技术方法[1]。", "relation": [{"head": "知识图谱", "head_type": "", "relation": "属于", "tail": "技术方法", "tail_type": ""}]}
 ```
 
-⚠️⚠️请务必参考[NER文件夹](../DeepKE/example/llm/InstructKGC/data/NER)中[sample.json](../DeepKE/example/llm/InstructKGC/data/NER/sample.json)和[schema.json](../DeepKE/example/llm/InstructKGC/data/NER/schema.json)的格式
-
-## RE微调数据集
-
-同NER一样，需要定义一些关系名，比如
-
-```
-"创始人","出生日期","作者"...
-```
-
-找出所有的关系，然后对于每个关系，在每章里面找到5句话，这些句子中带有这个关系
-
-比如我定义 **属于** 关系，对于
-
-```
-知识图谱是一种用图模型来描述知识和建模世界万物之间的关联关系的技术方法[1]。
-```
-
-构建的RE数据集是这样
-
-把关系名放入schema.json文件
-
-```
-["属于"]
-```
-
-对于每个句子，放入sample.json文件
-
-```
-{"text": "知识图谱是一种用图模型来描述知识和建模世界万物之间的关联关系的技术方法[1]。", "relation": [{"head": "知识图谱", "relation": "属于", "tail": "技术方法"}]}
-```
-
-⚠️⚠️请务必参考[NER文件夹](../DeepKE/example/llm/InstructKGC/data/RE)中[sample.json](../DeepKE/example/llm/InstructKGC/data/RE/sample.json)和[schema.json](../DeepKE/example/llm/InstructKGC/data/RE/schema.json)的格式
+⚠️⚠️更具体可以参考[SPO文件夹](../DeepKE/example/llm/InstructKGC/data/SPO)中[sample.json](../DeepKE/example/llm/InstructKGC/data/SPO/sample.json)的格式（head_type和tail_type请暂时置为空）
