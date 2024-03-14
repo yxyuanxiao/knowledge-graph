@@ -138,7 +138,7 @@ if __name__ == "__main__":
     parse.add_argument("--tgt_path", type=str, default="data/NER/processed.json")
     parse.add_argument("--schema_path", type=str, default='data/NER/schema.json')
     parse.add_argument("--language", type=str, default='zh', choices=['zh', 'en'], help="不同语言使用的template及转换脚本不同")
-    parse.add_argument("--task", type=str, default="NER", choices=['RE', 'NER', 'EE', 'EET', 'EEA'])
+    parse.add_argument("--task", type=str, default="NER", choices=['RE', 'NER', 'EE', 'EET', 'EEA', 'SPO'])
     parse.add_argument("--split", type=str, default='train', choices=['train', 'test'])
 
     parse.add_argument("--split_num", type=int, default=4, help="单个指令中最大schema数量。默认为4, -1表示不切分, 各个任务推荐的切分数量不同: NER:6, RE:4, EE:4, EET:4, EEA:4")
