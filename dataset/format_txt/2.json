@@ -7,7 +7,7 @@
 {"text": "W3C还推出了另外一种用于表示Web本体的语言RDF_Schema（简称RDFS）。"}
 {"text": "目前基于向量的知识表示开始流行，这类表示将知识图谱三元组中的主谓宾表示成数值向量，通过向量的知识表示，可以采用统计或者神经网络的方法进行推理，对知识图谱中的实体直接的关系进行预测。"}
 {"text": "本章将对知识表示的常见方法进行介绍，并且讨论如何用这些知识表示方法对知识进行建模。"}
-{"text": "2.1什么是知识表示20世纪90年代，MIT_AI实验室的R.Davis定义了知识表示的五大用途或特点：●客观事物的机器标示（A_KR_is_a_Surrogate），即知识表示首先需要定义客观实体的机器指代或指称。"
+{"text": "2.1什么是知识表示20世纪90年代，MIT_AI实验室的R.Davis定义了知识表示的五大用途或特点：●客观事物的机器标示（A_KR_is_a_Surrogate），即知识表示首先需要定义客观实体的机器指代或指称。"}
 {"text": "●一组本体约定和概念模型（A_KR_is_a_Set_of_Ontological_Commitments），即知识表示还需要定义用于描述客观事物的概念和类别体系。"}
 {"text": "●支持推理的表示基础（A_KR_is_a_Theory_of_Intelligent_Reasoning），即知识表示还需要提供机器推理的模型与方法。"}
 {"text": "●用于高效计算的数据结构（A_KR_is_a_medium_for_Efficient_Computation），即知识表示也是一种用于高效计算的数据结构。"}
@@ -64,13 +64,13 @@
 {"text": "2.2.2霍恩子句和霍恩逻辑霍恩子句（Horn_Clause）得名于逻辑学家Alfred_Horn[6]。"}
 {"text": "一个子句是文字的析取。"}
 {"text": "霍恩子句是带有最多一个肯定（positive）文字的子句，肯定文字指的是没有否定符号的文字。"}
-{"text": "例如，Øp1∨…∨Øpn∨ q是一个霍恩子句，它可以被等价地写为（p1∧…∧pn）→q。"}
+{"text": "例如，Øp1∨…∨Øpn∨_q是一个霍恩子句，它可以被等价地写为（p1∧…∧pn）→q。"}
 {"text": "Alfred_Horn于1951年撰文指出这种子句的重要性。"}
 {"text": "霍恩逻辑（Horn_Logic）是一阶逻辑的子集。"}
 {"text": "基于霍恩逻辑的知识库是一个霍恩规则的集合。"}
 {"text": "一个霍恩规则由原子公式构成：B1∧…∧Bn→H，其中H是头原子公式，B1,…,Bn是体原子公式。"}
 {"text": "事实是霍恩规则的特例，它们是没有体原子公式且没有变量的霍恩Berners-Lee）是一个事实，可以简写为图灵奖得主规则。"}
-{"text": "例如，→图灵奖得主（Tim （Tim_Berners-Lee）。"}
+{"text": "例如，→图灵奖得主（Tim（Tim_Berners-Lee）。"}
 {"text": "1.霍恩逻辑的优点●结构性。"}
 {"text": "能把事物的属性以及事物间的各种语义联想显式地表示出来。"}
 {"text": "●严密性。"}
@@ -180,7 +180,7 @@
 {"text": "这些类和属性由模式（schema）定义。"}
 {"text": "RDF_Schema（RDF模式，简称RDFS）提供了对类和属性的简单描述，从而给RDF数据提供词汇建模的语言。"}
 {"text": "更丰富的定义则需要用到OWL本体描述语言。"}
-{"text": "RDFS提供了最基本的对类和属性的描述元语：●rdf:type ：用于指定个体的类；●rdfs:subClassOf：用于指定类的父类；●rdfs:subPropertyOf：用于指定属性的父属性；●rdfs:domain：用于指定属性的定义域；●rdfs:range：用于指定属性的值域。"}
+{"text": "RDFS提供了最基本的对类和属性的描述元语：●rdf:type：用于指定个体的类；●rdfs:subClassOf：用于指定类的父类；●rdfs:subPropertyOf：用于指定属性的父属性；●rdfs:domain：用于指定属性的定义域；●rdfs:range：用于指定属性的值域。"}
 {"text": "举例来说，下面的三元组表示用户自定义的元数据Author是Dublin_Core的元数据Creator的子类，如图2-13所示。"}
 {"text": "RDF_Schema通过这样的方式描述不同词汇集的元数据之间的关系，从而为网络上统一格式的元数据交换打下基础。"}
 {"text": "下面用图2-14说明RDFS，为了简便，边的标签省略了RDF或者RDFS。"}
@@ -219,7 +219,7 @@
 {"text": "（5）属性的对称性声明。"}
 {"text": "声明一个属性是对称的。"}
 {"text": "例如rdf:typeowl:SymmetricProperty指的是exp:friend是一个具有对称性的属性；如果exp：小明exp:friendexp：小林，根据上述声明，有exp：小林_exp:friend_exp：小明。"}
-{"text": "exp:friend （6）属性的全称限定声明。"}
+{"text": "exp:friend（6）属性的全称限定声明。"}
 {"text": "声明一个属性是全称限定。"}
 {"text": "如：exp:Person_owl:allValuesFrom_exp:Womenexp:Person_owl:onProperty_exp:hasMother这个说明exp:hasMother_在主语属于exp:Person类的条件下，宾语的取值只能来自exp:Women类。"}
 {"text": "（7）属性的存在限定声明。"}
@@ -228,7 +228,7 @@
 {"text": "上面的三元组相当于：关于语义网的论文部分发表在AAAI上。"}
 {"text": "（8）属性的基数限定声明。"}
 {"text": "声明一个属性的基数。"}
-{"text": "如：exp:Person_owl:cardinality “1”^^xsd:integerexp:Person_owl:onProperty_exp:hasMother指的是exp:hasMother在主语属于exp:Person类的条件下，宾语的取值只能有一个，“1”的数据类型被声明为xsd:integer，这是基数约束，本质上属于属性的局部约束。"}
+{"text": "如：exp:Person_owl:cardinality“1”^^xsd:integerexp:Person_owl:onProperty_exp:hasMother指的是exp:hasMother在主语属于exp:Person类的条件下，宾语的取值只能有一个，“1”的数据类型被声明为xsd:integer，这是基数约束，本质上属于属性的局部约束。"}
 {"text": "（9）相交的类声明。"}
 {"text": "声明一个类是等价于两个类相交。"}
 {"text": "如：exp:Mother_owl:intersectionOf_tmp_tmp_rdf:type_rdfs:Collection_tmp_rdfs:member_exp:Person_tmp_rdfs:member_exp:HasChildren指tmp是临时资源，它是exp:Person和exp:HasChildren两个类的交集。"}
@@ -245,12 +245,12 @@
 {"text": "与OWL_2_QL不同，OWL_2_EL专为概念术语描述、本体的分类推理而设计，广泛应用在生物医疗领域，如临床医疗术语本体SNOMED_CT。"}
 {"text": "OWL_2_EL的分类复杂度是Ptime-Complete，它是基于描述逻辑语言EL++定义的。"}
 {"text": "表2-7给出了OWL_2_QL词汇总结。"}
-{"text": "表2-7OWL_2_QL词汇总结例如，OWL_2_EL允许表达如下复杂的概念：Female ⊓ ∃likes.Movie ⊓ ∃hasSon.(Student ⊓ ∃attends.CSCourse)指的是所有喜欢电影、儿子是学生且参加计算机课程的女性。"}
+{"text": "表2-7OWL_2_QL词汇总结例如，OWL_2_EL允许表达如下复杂的概念：Female⊓∃likes.Movie⊓∃hasSon.(Student⊓∃attends.CSCourse)指的是所有喜欢电影、儿子是学生且参加计算机课程的女性。"}
 {"text": "下面给出一个例子。"}
-{"text": "假设有一个本体，包含以下公理：公理1.Apple ⊑ ∃beInvestedBy.(Fidelity ⊓BlackStone)：苹果由富达和黑石投资。"}
-{"text": "公理2.∃beFundedBy.Fidelity ⊑ InnovativeCompanies：借助富达融资的公司都是创新企业。"}
+{"text": "假设有一个本体，包含以下公理：公理1.Apple⊑∃beInvestedBy.(Fidelity⊓BlackStone)：苹果由富达和黑石投资。"}
+{"text": "公理2.∃beFundedBy.Fidelity⊑InnovativeCompanies：借助富达融资的公司都是创新企业。"}
 {"text": "公理3.∃beFundedBy.BlackStone⊑InnovativeCompanies：借助黑石融资的公司都是创新企业。"}
-{"text": "公理4.beInvestedBy ⊑ beFundedBy：投资即是帮助融资。"}
+{"text": "公理4.beInvestedBy⊑beFundedBy：投资即是帮助融资。"}
 {"text": "由公理1可以推出公理5:Apple⊑∃beInvestedBy.Fidelity；由公理5和公理4可以推出公⊑⊑∃beFundedBy.Fidelity；最后，由公理6和公理2可以推出公理7:Apple理6:Apple_InnovativeCompanies。"}
 {"text": "还有一个推理复杂度是多项式时间的OWL2子语言叫OWL_2_RL。"}
 {"text": "OWL_2_RL扩展了RDFS的表达能力，在RDFS的基础上引入属性的特殊特性（函数性、互反性和对称性），允许声明等价性，允许属性的局部约束。"}
@@ -279,7 +279,7 @@
 {"text": "下面给出一个SPARQL查询的例子。"}
 {"text": "给定一个RDF数据集：以及一个SPARQL查询：这个SPARQL查询期望查询所有的收购关系，可以得到查询结果如表2-8所示。"}
 {"text": "表2-8查询结果给定论文一个SPARQL查询：这个查询期望查询所有具备关联交易的公司。"}
-{"text": "假设有下面两条规则：hold_share（X, Y）:- control（X, Y）conn_trans（Y,Z）:- hold_share（X, Y）, hold_share（X, Z）第一条规则指的是如果X控制了Y，那么X控股Y；第二条规则指的是如果X同时控股Y和Z，那么Y和Z具备关联交易。"}
+{"text": "假设有下面两条规则：hold_share（X,Y）:-control（X,Y）conn_trans（Y,Z）:-hold_share（X,Y）,hold_share（X,Z）第一条规则指的是如果X控制了Y，那么X控股Y；第二条规则指的是如果X同时控股Y和Z，那么Y和Z具备关联交易。"}
 {"text": "通过查询重写技术，可以得到下面的SPARQL查询：但是这个查询比较复杂，可以通过下面的SPARQL查询简化：在这个查询中，SPARQL允许嵌套查询，即WHERE子句中包含SELECT子句。"}
 {"text": "2.3.4语义Markup表示语言语义网进一步定义了在网页中嵌入语义Markup的方法和表示语言。"}
 {"text": "被谷歌知识图谱以及Schema.Org采用的语义Markup语言主要包括JSON-LD、RDFa和HTML5MicroData。"}
@@ -314,7 +314,7 @@
 {"text": "为便于比较分析，以RDF、OWL的描述术语和表达能力为主要比较对象。"}
 {"text": "2.4.1FreebaseFreebase的知识表示框架主要包含如下几个要素：对象-Object、事实-Facts、类型-ID，称为MIDTypes和属性-Properties。"}
 {"text": "“Object”代表实体。"}
-{"text": "每一个“Object”有唯一的 （Machine_ID）。"}
+{"text": "每一个“Object”有唯一的（Machine_ID）。"}
 {"text": "一个“Object”可以有一个或多个“Types”。"}
 {"text": "“Properties”用来描述“Facts”。"}
 {"text": "例如，“Barack_Obama”是一个Object，并拥有一个唯一的MID:“/m/02mjmr”。"}
@@ -336,14 +336,14 @@
 {"text": "一个Statement包含一个Property、一个或多个Values、一个或多个Qualifiers、一个或多个References、一个标识重要性程度的Rank。"}
 {"text": "修饰-Qualifiers用于处理复杂的多元表示。"}
 {"text": "如一个陈述“spouse:Jane_Belson”描述了一个二元关系。"}
-{"text": "可以使用Qualifiers给这个陈述增加多个附加信息来刻画多元关系，如“startdate: 25_November_1991” and “end_date: 11_May_2011”等。"}
+{"text": "可以使用Qualifiers给这个陈述增加多个附加信息来刻画多元关系，如“startdate:25_November_1991”and“end_date:11_May_2011”等。"}
 {"text": "引用-References用于标识每个陈述的来源或出处，如来源于某个维基百科页面等。"}
 {"text": "引用也是一种Qualifiers，通常添加到Statements的附加信息中。"}
 {"text": "Wikidata支持多种数值类型，包括其自有的Item类型、RDF_Literal、URL、媒体类型Commons_Media，以及Time、Globe_coordinates和Quantity三种复杂类型。"}
 {"text": "Wikidata允许给每个Statement增加三种权重：normal（缺省）、preferred和deprecated。"}
 {"text": "Wikidata定义了三种Snacks作为Statement的具体描述结构：PropertyValueSnack、PropertyNoValueSnack、PropertySomeValueSnack。"}
 {"text": "PropertyNoValueSnack类似于OWL中的Negation，表示类似于“Elizabeth_spouse”的知识。"}
-{"text": "PropertySomeValueSnack类似于OWL中的存在量词someValuesFrom，表示类似于“PopeLinus_had_a_date_of_birth, but_it_is_unknown_to_us”这样的知识。"}
+{"text": "PropertySomeValueSnack类似于OWL中的存在量词someValuesFrom，表示类似于“PopeLinus_had_a_date_of_birth,but_it_is_unknown_to_us”这样的知识。"}
 {"text": "of_England_had_no_I_Wikidata的URI机制遵循了Linked_Open_Data的URI原则，采用统一的URI机制：Item，如Q49，或者一个http://www.wikidata.org/entity/<id>。"}
 {"text": "其中，<id>可以是一个Property，如P234。"}
 {"text": "2.4.3ConceptNet5ConceptNet5的知识表示框架主要包含如下要素：概念-Concepts、词-Words、短语-Phrases、断言-Assertions、关系-Relations、边-Edges。"}
@@ -392,7 +392,7 @@
 {"text": "对词向量的产生方法到现在为止有较多的研究，在本章中并不展开讨论，下面简单介绍经典的开源工具word2vec[8]中包含的CBoW和Skip-gram两个模型。"}
 {"text": "CBoW也就是连续词袋模型（Continuous_Bag-of-Words），和之前提到的BoW相似之处在于该模型也不用考虑词序的信息。"}
 {"text": "其主要思想是，用上下文预测中心词，从而训练出的词向量包含了一定的上下文信息。"}
-{"text": "如图2-21（a）所示，其中wn是中心词， wn−2,wn−1,wn+1,wn+2为该中心词的上下文的词。"}
+{"text": "如图2-21（a）所示，其中wn是中心词，wn−2,wn−1,wn+1,wn+2为该中心词的上下文的词。"}
 {"text": "将上下文词的独热表示与词向量矩阵E相乘，提取相应的词向量并求和得到投影层，然后再经过一个Softmax层最终得到输出，输出的每一维表达的就是词表中每个词作为该上下文的中心词的概率。"}
 {"text": "整个模型在训练的过程就像是一个窗口在训练语料上进行滑动，所以被称为连续词袋模型。"}
 {"text": "Skip-gram的思想与CBoW恰恰相反，其考虑用中心词来预测上下文词。"}
@@ -401,13 +401,13 @@
 {"text": "vec（Rome）−vec（Italy）≈vec（Paris）−vec（France）可以看出，Roma和Italy之间有is-capital-of的关系，而这种关系恰好也在Paris和France之间出现。"}
 {"text": "通过两对在语义上关系相同的词向量相减可以得出相近的结果，可以猜想出Roma和Italy的词向量通过简单的相减运算，得到了一种类似is-capital-of关系的连续向量，而这种关系的向量可以近似地平移到其他具有类似关系的两个词向量之间。"}
 {"text": "这也说明了经过训练带有一定语义层面信息的词向量具有一定的空间平移性。"}
-{"text": "图2-22词向量在连续空间中的关系上面所说的两个词之间的关系，恰好可以简单地理解成知识图谱中的关系（relation）、（Rome, is-capital-of, Italy）和（Paris, is-capital-of, France），可以看作是知识图谱中的三元组（triple），这对知识图谱的向量表示产生了一定的启发。"}
+{"text": "图2-22词向量在连续空间中的关系上面所说的两个词之间的关系，恰好可以简单地理解成知识图谱中的关系（relation）、（Rome,is-capital-of,Italy）和（Paris,is-capital-of,France），可以看作是知识图谱中的三元组（triple），这对知识图谱的向量表示产生了一定的启发。"}
 {"text": "2.5.3知识图谱嵌入的概念为了解决前面提到的知识图谱表示的挑战，在词向量的启发下，研究者考虑如何将知识图谱中的实体和关系映射到连续的向量空间，并包含一些语义层面的信息，可以使得在下游任务中更加方便地操作知识图谱，例如问答任务[9]、关系抽取[10]等。"}
 {"text": "对于计算机来说，连续向量的表达可以蕴涵更多的语义，更容易被计算机理解和操作。"}
-{"text": "把这种将知识图谱中包括实体和关系的内容映射到连续向量空间方法的研究领域称为知识图谱嵌入（Knowledge_Graph （Representation_Learning）、知识表示学习。"}
+{"text": "把这种将知识图谱中包括实体和关系的内容映射到连续向量空间方法的研究领域称为知识图谱嵌入（Knowledge_Graph（Representation_Learning）、知识表示学习。"}
 {"text": "Embedding）、知识图谱的向量表示、知识图谱的表示学习类似于词向量，知识图谱嵌入也是通过机器学习的方法对模型进行学习，与独热编码、词袋模型的最大区别在于，知识图谱嵌入方法的训练需要基于监督学习。"}
 {"text": "在训练的过程中，可以学习一定的语义层信息，词向量具有的空间平移性也简单地说明了这点。"}
-{"text": "类似于词向量，经典的知识图谱嵌入模型TransE的设计思想就是，如果一个三元组（h, r, t）成立，那么它们需要符合h+r ≈ t关系，例如：vec（Rome）+vec（is−capital−of）≈vec（Italy）所以，在知识图谱嵌入的学习过程中，不同的模型从不同的角度把相应的语义信息嵌入知识图谱的向量表示中，如图2-23所示。"}
+{"text": "类似于词向量，经典的知识图谱嵌入模型TransE的设计思想就是，如果一个三元组（h,r,t）成立，那么它们需要符合h+r≈t关系，例如：vec（Rome）+vec（is−capital−of）≈vec（Italy）所以，在知识图谱嵌入的学习过程中，不同的模型从不同的角度把相应的语义信息嵌入知识图谱的向量表示中，如图2-23所示。"}
 {"text": "图2-23语义信息嵌入知识图谱的向量表示中2.5.4知识图谱嵌入的优点研究者将目光从传统的知识图谱表示方法转移到知识图谱的嵌入方法，是因为与之前的方法相比，用向量表达实体和关系的知识图谱嵌入方法有很多优点。"}
 {"text": "使用向量的表达方式可以提高应用时的计算效率，当把知识图谱的内容映射到向量空间时，相应的算法可以使用数值计算，所以计算的效率也会同时提高。"}
 {"text": "增加了下游应用设计的多样性。"}
@@ -466,7 +466,7 @@
 {"text": "该任务可以删除同一个知识库中冗余的实体，也可以在知识库融合的时候从异构的数据源中找到相同的实体。"}
 {"text": "一种方法是，如果需要确定x、y两个实体指代同一个对象有多大可能，则使用知识图谱嵌入的得分函数对三元组(x,EqualTo,y)打分，但这种方法的前提是需要在知识库中存在EqualTo关系。"}
 {"text": "也有研究者提出完全根据实体的向量表示判断，例如设计一些实体之间的相似度函数来判断两个实体的相似程度，再进行对齐。"}
-{"text": "4.问答系统利用知识图谱完成问答系统是该任务的一个研究方向，该任务的重心是对某一个具体的通过自然语言表达的问题，使用知识图谱中的三元组对其进行回答，如下：A: Where_is_the_capital_of_Italy？Q: Rome（Rome, is-capital-of, Italy）A: Who_is_the_president_of_USA？Q: Donald_Trump（Donald_Trump, is-president-of, USA）文献[9]介绍了一种借助知识图谱嵌入完成该问题的方法。"}
+{"text": "4.问答系统利用知识图谱完成问答系统是该任务的一个研究方向，该任务的重心是对某一个具体的通过自然语言表达的问题，使用知识图谱中的三元组对其进行回答，如下：A:Where_is_the_capital_of_Italy？Q:Rome（Rome,is-capital-of,Italy）A:Who_is_the_president_of_USA？Q:Donald_Trump（Donald_Trump,is-president-of,USA）文献[9]介绍了一种借助知识图谱嵌入完成该问题的方法。"}
 {"text": "简单来说就是设计一种得分函数，使问题的向量表示和其正确答案的向量表示得分较高。"}
 {"text": "S（q,a）是被设计出来的得分函数S（q,a）=（Wφ（q））⊺（Wψ（a））.式中，W为包含词语、实体和关系的向量表示的矩阵；φ（q）为词语出现的稀疏向量；ψ（a）为实体和关系出现的稀疏向量。"}
 {"text": "简单来说，Wφ（q）和Wψ（a）可以分别表示问题和答案的向量表示。"}
