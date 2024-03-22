@@ -1,0 +1,1 @@
+python ie2instruction/convert_func.py --src_path ft_data/8.json --tgt_path spo_data/8_train.json --schema_path fine-turning/schema.json --language zh --task SPO --split_num 4 --split train
