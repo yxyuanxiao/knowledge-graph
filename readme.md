@@ -43,7 +43,10 @@ pdfminer3k==1.3.4
 ```
 包含
 等价
-
+来源
+属于
+由组成
+实现
 ```
 
 #### 属性relation
@@ -56,13 +59,31 @@ pdfminer3k==1.3.4
 实体_作用_文本
 实体_特点_文本
 实体_方法_文本
+实体_缺点_文本
 知识图谱项目_创建时间_时间
 知识图谱项目_创建者_人物/实验室
 ```
 
 ## 步骤
 
-### 配置环境
+### 将PDF转换成TXT
+
+1. 安装`pdfminer`
+
+```
+pip install pdfminer.six
+pip3 install pdfminer3k
+```
+
+2. 在`kg/dataset/utils/pdf2txt.py`中修改需要转换的章节名，并运行
+
+### 将TXT转成JSON
+
+在`kg/dataset/utils/regular_extract.py`中修改需要转换的文件名，并运行
+
+### 微调并测试大语言模型
+
+#### 配置环境
 
 1. 下载基本代码
 
@@ -72,97 +93,70 @@ git clone https://github.com/yxyuanxiao/knowledge-graph.git
 
 2. 使用`Anaconda`创建一个虚拟环境
 ```
-conda create -n deepke python=3.8
-
-conda activate deepke
+conda create -n deepke-llm python=3.9
+conda activate deepke-llm
 ```
 
 
-3. 安装pdfminer
+3. 进入`DeepKE`的大语言目录
 
 ```
-pip install pdfminer.six
-pip3 install pdfminer3k
+cd ./knowledge-graph/DeepKE/example/llm
 ```
 
-4. 进入`DeepKE`目录
 
-```
-cd ./knowledge-graph/DeepKE/
-```
-
-5. 安装DeepKE
+4. 安装大语言所需环境
 
 ```
 pip install -r requirements.txt
-python setup.py install
-python setup.py develop
 ```
 
-6. 下载[bert-base-chinese](https://huggingface.co/google-bert/bert-base-chinese/tree/main)，至少下载`config.json, pytorch_model.bin, tokenizer.json, tokenizer_config.json, vocab.txt`，将五个文件放入一个`bert-base-chinese`文件夹中，将`bert-base-chinese`放入`DeepKE`中，保证文件结构为
+#### LoRA微调
+
+我们采用了百川7B大模型在RTX3090的显卡上进行微调
+
+1. 在huggingface上下载[百川大模型](https://huggingface.co/baichuan-inc/Baichuan-13B-Base)，模型文件结构如下
 
 ```
-root
-├───DeepKE
-│	├───bert-base-chinese
-│		├───config.json
-│		├───pytorch_model.bin
-│		├───tokenizer.json
-│		├───tokenizer_config.json
-│		├───vocab.txt
+Baichuan2-7B-Base
+├───config.json
+├───configuration_baichuan.py
+├───generation_utils.py
+├───modeling_baichuan.py
+├───pytorch_model-00001-of-00002.bin
+├───pytorch_model-00002-of-00002.bin
+├───pytorch_model.bin.index.json
+├───quantizer.py
+├───special_tokens_map.json
+├───tokenization_baichuan.py
+├───tokenizer_config.json
+├───tokenizer.model
 ```
 
-7. 设置模型路径。打开文件`/knowledge-graph/DeepKE/example/ner/standard/conf/hydra/model/bert.yaml`，将`bert_model`参数改成`bert-base-chinese`的**绝对路径**，打开文件`/knowledge-graph/DeepKE/example/re/standard/conf/model/lm.yaml` ，将`lm_file`参数改成`bert-base-chinese`的**绝对路径**
-
-⚠️⚠️RTX3090及以上显卡会出现的问题：
-
-遇到如下报错
+进入`InstructKGC`目录
 
 ```
-RuntimeError: CUDA error: no kernel image is available for execution on the device
-CUDA kernel errors might be asynchronously reported at some other API call,so the stacktrace below might be incorrect.
-For debugging consider passing CUDA_LAUNCH_BLOCKING=1.
+cd ./knowledge-graph/DeepKE/example/llm/InstructKGC
+mkdir results
+mkdir lora
+mkdir models
 ```
 
-请在终端中输入
+将模型放入`models`文件夹中
+
+2. 运行微调脚本
 
 ```
-python
-import torch; print(torch.cuda.get_device_capability())
+bash ft_scripts/fine_baichuan.bash
 ```
 
-若出现如下警告
+具体参数设置可以参考[DeepKE的GitHub](https://github.com/zjunlp/DeepKE/blob/main/example/llm/InstructKGC/README.md)
+
+#### 预测
+
+在`src/inference.bash`修改需要预测的文件后，执行以下命令
 
 ```
-NVIDIA GeForce RTX 3090 with CUDA capability sm_86 is not compatible with the current PyTorch installation.
-The current PyTorch install supports CUDA capabilities sm_37 sm_50 sm_60 sm_70.
-If you want to use the NVIDIA GeForce RTX 3090 GPU with PyTorch, please check the instructions at https://pytorch.org/get-started/locally/
+bash src/inference.bash
 ```
 
-则是显卡的算力太高而pytroch的版本太低，则需要卸载pytorch重新安装新版本
-
-```
-pip uninstall torch
-pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
-```
-
-### 测试环境
-
-1. 输入任务目录
-
-```
-cd DeepKE/example/re/standard
-```
-
-2. 下载数据集
-
-```
-wget 120.27.214.45/Data/re/standard/data.tar.gz
-tar -xzvf data.tar.gz
-```
-
-3. 训练
-
-```
-python run.py
-```

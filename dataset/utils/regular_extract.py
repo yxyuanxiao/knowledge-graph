@@ -25,7 +25,7 @@ def save_sentences_to_file(sentences, output_file):
 
 # 示例用法
 file_path = 'path\\name.txt'  # 替换为实际的文件路径
-output_file = 'name.txt'  # 替换为实际的输出文件路径
+output_file = 'name.json'  # 替换为实际的输出文件路径
 
 sentences = extract_sentences_from_file(file_path)
 save_sentences_to_file(sentences, output_file)

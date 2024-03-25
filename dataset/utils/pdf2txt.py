@@ -7,9 +7,9 @@ from pdfminer.pdfpage import PDFPage
 # 打开PDF文件
 filename = '第一章'
 pdf_filename = filename + '.pdf'
-txt_filename = filename + '.txt'
-pdf_path = os.path.join('dataset', 'pdf', pdf_filename)
-save_path = os.path.join('dataset', 'txt')
+txt_filename = filename + '1.txt'
+pdf_path = os.path.join('../', 'pdf', pdf_filename)
+save_path = os.path.join('../', 'txt')
 if not os.path.exists(save_path):
     os.makedirs(save_path)
 txt_path = os.path.join(save_path, txt_filename)
