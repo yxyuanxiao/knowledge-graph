@@ -10,6 +10,8 @@ class REProcesser(Processer):
     def filter_lable(self, record):
         labels = []
         already = set()
+        if 'relation' not in record:
+            return record
         for label in record['relation']:
             if (label['head'], label['relation'], label['tail']) in already:
                 continue

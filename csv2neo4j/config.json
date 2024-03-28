@@ -1,0 +1,15 @@
+{
+  "__annotation1": "注释: password 一定要更改成你自己的password",
+  "password": "newpwd",
+  "__annotation2": "注释: 这里是列名和其对应的列的序号",
+  "input": 0,
+  "subject": 5,
+  "subject_type": 6,
+  "data/object": 3,
+  "relation": 4,
+  "object": 1,
+  "object_type": 2,
+  "__annotation3": "你的CSV文件的名字",
+  "filename_csv": "mycsv.csv"
+}
+
