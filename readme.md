@@ -9,8 +9,7 @@ root
 ├───dataset				//训练数据
 ├───output				//模型输出
 │
-├───DeepKE
-│	├───bert-base-chinese
+├───llm		//DeepKe提供的大语言lora微调代码
 │		...
 ```
 
@@ -18,6 +17,10 @@ root
 
 ```
 pdfminer3k==1.3.4
+numpy==1.26.4
+tqdm==4.66.2
+pandas==2.2.1
+neo4j==5.18.0
 ```
 
 ## Schema
@@ -101,7 +104,7 @@ conda activate deepke-llm
 3. 进入`DeepKE`的大语言目录
 
 ```
-cd ./knowledge-graph/DeepKE/example/llm
+cd ./knowledge-graph/llm
 ```
 
 
@@ -136,7 +139,7 @@ Baichuan2-7B-Base
 进入`InstructKGC`目录
 
 ```
-cd ./knowledge-graph/DeepKE/example/llm/InstructKGC
+cd ./knowledge-graph/llm/InstructKGC
 mkdir results
 mkdir lora
 mkdir models
@@ -157,12 +160,12 @@ bash ft_scripts/fine_baichuan.bash
 在`src/inference.bash`修改需要预测的文件后，执行以下命令
 
 ```
-bash src/inference.bash
+bash infer_scripts/infer_baichuan.bash
 ```
 
 ## Neo4j可视化
 
-###  step 1 检查配置
+###  检查配置
 
 检查电脑是否安装了neo4j，在命令行输入 
 
@@ -174,21 +177,25 @@ neo4j start
 
 ![img](csv2neo4j/img.png)
 
-## step 2 运行代码
+安装环境
 
-更改config.json中的超参数，其中 password替换为你自己的neo4j的密码，然后运行csv2neo4j.py
+```
+pip install neo4j
+```
+
+## 修改参数并运行代码
+
+更改config.json中的超参数，其中`password`替换为你自己的neo4j的密码，
+
+在`filename_csv`中可以添加多个需要可视化的csv文件
+
+然后运行csv2neo4j.py
 
 ```bash
 python csv2neo4j.py
 ```
 
-## step3 替换数据集
-
-按照mycsv.csv的格式，将你的数据替换上去，确保除data/object这一列以外的列都不存在空白值。
-
-可以直接抄mycsv.csv的格式，也可以更改config.json文件的超参数，以符合你的csv格式
-
-## step 4 查看效果
+## 查看效果
 
 进入网页[这里](http://localhost:7474/)即可查看你的效果，示例如图:
 

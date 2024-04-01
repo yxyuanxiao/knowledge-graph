@@ -1,5 +1,0 @@
-defaults:
-  - hydra/output: custom
-  - train
-  - predict
-

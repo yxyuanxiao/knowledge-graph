@@ -1,6 +1,6 @@
 {
   "__annotation1": "注释: password 一定要更改成你自己的password",
-  "password": "newpwd",
+  "password": "123456",
   "__annotation2": "注释: 这里是列名和其对应的列的序号",
   "input": 0,
   "subject": 5,
@@ -9,7 +9,16 @@
   "relation": 4,
   "object": 1,
   "object_type": 2,
-  "__annotation3": "你的CSV文件的名字",
-  "filename_csv": "mycsv.csv"
+  "__annotation3": "你的CSV文件的名字，可以在中括号中放入多个文件名",
+  "filename_csv": [
+    "./csv/1.csv",
+    "./csv/2.csv",
+    "./csv/3.csv",
+    "./csv/4.csv",
+    "./csv/5.csv",
+    "./csv/6.csv",
+    "./csv/7.csv",
+    "./csv/8.csv"
+  ]
 }
 
