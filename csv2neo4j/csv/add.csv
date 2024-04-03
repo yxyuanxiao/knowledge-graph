@@ -271,3 +271,4 @@
 ,Cypher,知识存储,,包含,Cypher-DELETE,知识存储
 ,Cypher,知识存储,,包含,Cypher-SET,知识存储
 ,Cypher-SET,知识存储,属性,作用,更新图,文本
+,逻辑推理,知识推理,,包含,不一致检查,知识推理
