@@ -12,7 +12,7 @@ dataset
 ├───utils			//版本转换工具
 │	├───csv2json.py		//将数据集从csv转换成json格式
 │	├───pdf2txt.py		//将书pdf转化成txt
-│	├───regular_extract.py		//将txt将规范化
+│	├───regular_extract.py	//将txt将规范化
 ├───ie2instruction		//Deepke提供的转换训练数据工具，将json转换为用于训练的json
 ├───script			//脚本
 │	├───convert.sh		//提供脚本运行Deepke的工具

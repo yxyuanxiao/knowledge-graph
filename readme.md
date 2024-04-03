@@ -6,8 +6,8 @@
 root
 ├───requirements.txt
 │
-├───dataset				//训练数据
-├───output				//模型输出
+├───dataset		//训练数据
+├───output		//模型输出
 │
 ├───llm		//DeepKe提供的大语言lora微调代码
 │		...
@@ -153,7 +153,11 @@ mkdir models
 
 将模型放入`models`文件夹中
 
+将数据放入`data`文件夹中
+
 2. 运行微调脚本
+
+按需修改`ft_scripts/fine_baichuan.bash`中的参数
 
 ```
 bash ft_scripts/fine_baichuan.bash
