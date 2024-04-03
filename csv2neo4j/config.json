@@ -18,7 +18,9 @@
     "./csv/5.csv",
     "./csv/6.csv",
     "./csv/7.csv",
-    "./csv/8.csv"
+    "./csv/8.csv",
+    "./csv/add.csv",
+    "./csv/exercise.csv"
   ]
 }
 

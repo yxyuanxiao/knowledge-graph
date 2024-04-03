@@ -8,8 +8,8 @@
 "知识图谱的早期理念来自Semantic_Web[2,3]（语义网），其最初理想是把基于文本链接的万维网转化成基于实体链接的语义网。",知识图谱,知识图谱,,来源,语义网,知识图谱
 "知识图谱的早期理念来自Semantic_Web[2,3]（语义网），其最初理想是把基于文本链接的万维网转化成基于实体链接的语义网。",语义网,知识图谱,属性,目标,把基于文本链接的万维网转化成基于实体链接的语义网,文本
 "知识图谱的早期理念来自Semantic_Web[2,3]（语义网），其最初理想是把基于文本链接的万维网转化成基于实体链接的语义网。",语义网,知识图谱,属性,英文名,Semantic_Web,文本
-Semantic_Web仍然基于图和链接的组织方式，只是图中的节点代表的不只是网页，而是客观世界中的实体（如人、机构、地点等），而超链接也被增加了语义描述，具体标明实体之间的关系（如出生地是、创办人是等）。,语义网,知识图谱,,由组成,图,知识图谱
-Semantic_Web仍然基于图和链接的组织方式，只是图中的节点代表的不只是网页，而是客观世界中的实体（如人、机构、地点等），而超链接也被增加了语义描述，具体标明实体之间的关系（如出生地是、创办人是等）。,语义网,知识图谱,,由组成,链接,知识图谱
+Semantic_Web仍然基于图和链接的组织方式，只是图中的节点代表的不只是网页，而是客观世界中的实体（如人、机构、地点等），而超链接也被增加了语义描述，具体标明实体之间的关系（如出生地是、创办人是等）。,语义网,知识图谱,,由组成,节点,知识图谱
+Semantic_Web仍然基于图和链接的组织方式，只是图中的节点代表的不只是网页，而是客观世界中的实体（如人、机构、地点等），而超链接也被增加了语义描述，具体标明实体之间的关系（如出生地是、创办人是等）。,语义网,知识图谱,,由组成,连接,知识图谱
 相对于传统的网页互联网，Semantic_Web的本质是数据的互联网（Web_of_Data）或事物的互联网（Web_of_Things）。,语义网,知识图谱,,等价,数据的互联网,知识图谱
 相对于传统的网页互联网，Semantic_Web的本质是数据的互联网（Web_of_Data）或事物的互联网（Web_of_Things）。,语义网,知识图谱,,等价,事物的互联网,知识图谱
 相对于传统的网页互联网，Semantic_Web的本质是数据的互联网（Web_of_Data）或事物的互联网（Web_of_Things）。,数据的互联网,知识图谱,属性,英文名,Web_of_Data,文本
@@ -295,9 +295,7 @@ Cayley是由谷歌公司工程师开发的一款轻量级开源图数据库，�
 1.6.3知识图谱与机器推理推理是指基于已知的事实或知识推断得出未知的事实或知识的过程。,知识推理,知识推理,,属于,知识图谱,知识图谱
 1.6.3知识图谱与机器推理推理是指基于已知的事实或知识推断得出未知的事实或知识的过程。,知识推理,知识推理,属性,被定义为,基于已知的事实或知识推断得出未知的事实或知识的过程。,文本
 典型的推理包括演绎推理（Deductive_Reasoning）、溯因推理（Inductive_Reasoning）、归纳推理（Abductive_Reasoning）、类比推理（Analogical_Reasoning）等。,知识推理,知识推理,,包含,演绎推理,知识推理
-典型的推理包括演绎推理（Deductive_Reasoning）、溯因推理（Inductive_Reasoning）、归纳推理（Abductive_Reasoning）、类比推理（Analogical_Reasoning）等。,知识推理,知识推理,,包含,溯因推理,知识推理
 典型的推理包括演绎推理（Deductive_Reasoning）、溯因推理（Inductive_Reasoning）、归纳推理（Abductive_Reasoning）、类比推理（Analogical_Reasoning）等。,知识推理,知识推理,,包含,归纳推理,知识推理
-典型的推理包括演绎推理（Deductive_Reasoning）、溯因推理（Inductive_Reasoning）、归纳推理（Abductive_Reasoning）、类比推理（Analogical_Reasoning）等。,知识推理,知识推理,,包含,类比推理,知识推理
 典型的推理包括演绎推理（Deductive_Reasoning）、溯因推理（Inductive_Reasoning）、归纳推理（Abductive_Reasoning）、类比推理（Analogical_Reasoning）等。,演绎推理,知识推理,属性,英文名,Deductive_Reasoning,文本
 典型的推理包括演绎推理（Deductive_Reasoning）、溯因推理（Inductive_Reasoning）、归纳推理（Abductive_Reasoning）、类比推理（Analogical_Reasoning）等。,溯因推理,知识推理,属性,英文名,Inductive_Reasoning,文本
 典型的推理包括演绎推理（Deductive_Reasoning）、溯因推理（Inductive_Reasoning）、归纳推理（Abductive_Reasoning）、类比推理（Analogical_Reasoning）等。,归纳推理,知识推理,属性,英文名,Abductive_Reasoning,文本

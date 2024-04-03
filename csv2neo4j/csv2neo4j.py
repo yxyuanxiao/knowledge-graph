@@ -54,7 +54,8 @@ with driver.session() as session:
                             start_name=objectt, end_name=subjectt)
 
                 if flag_of_relation:
-                    result = session.run("MATCH (n {name: $name}) SET n.`" + relation + "`  = $value RETURN n",
-                                         name=objectt, value=subjectt, relation=relation)
+                    result = session.run("MATCH (n {name: $name}) "
+                         "SET n.`" + relation + "` = COALESCE(n.`" + relation + "`, '') + CASE WHEN n.`" + relation + "` IS NULL THEN '' ELSE ';' END + $value ",
+                         name=objectt, value=subjectt, relation=relation)
 driver.close()
 print("successfully")
