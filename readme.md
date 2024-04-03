@@ -21,6 +21,8 @@ numpy==1.26.4
 tqdm==4.66.2
 pandas==2.2.1
 neo4j==5.18.0
+py2neo==2021.2.4
+ahocorasick==2.1.0
 ```
 
 ## Schema
@@ -36,6 +38,7 @@ neo4j==5.18.0
 知识推理
 语义搜索
 知识问答
+链接
 知识图谱项目
 ```
 
@@ -50,6 +53,7 @@ neo4j==5.18.0
 属于
 由组成
 实现
+习题
 ```
 
 #### 属性relation
@@ -63,6 +67,8 @@ neo4j==5.18.0
 实体_特点_文本
 实体_方法_文本
 实体_缺点_文本
+实体_语法_文本
+实体_链接_链接
 知识图谱项目_创建时间_时间
 知识图谱项目_创建者_人物/实验室
 ```
@@ -163,9 +169,9 @@ bash ft_scripts/fine_baichuan.bash
 bash infer_scripts/infer_baichuan.bash
 ```
 
-## Neo4j可视化
+### Neo4j可视化
 
-###  检查配置
+####  检查配置
 
 检查电脑是否安装了neo4j，在命令行输入 
 
@@ -183,7 +189,7 @@ neo4j start
 pip install neo4j
 ```
 
-## 修改参数并运行代码
+#### 修改参数并运行代码
 
 更改config.json中的超参数，其中`password`替换为你自己的neo4j的密码，
 
@@ -195,8 +201,23 @@ pip install neo4j
 python csv2neo4j.py
 ```
 
-## 查看效果
+#### 查看效果
 
 进入网页[这里](http://localhost:7474/)即可查看你的效果，示例如图:
 
 ![img_1](csv2neo4j/img_1.png)
+
+### 知识问答系统
+
+❗️请确保已经运行了neo4j并且根据上一步将数据导入了neo4j
+
+#### 安装环境
+
+```
+pip install pyahocorasick
+pip install py2neo
+```
+
+### 运行代码
+
+运行`kg/QASystem/chatbot.py`
