@@ -1,6 +1,6 @@
 class QuestionPaser:
-    '''构建实体节点'''
 
+    '''构建实体节点'''
     def build_entitydict(self, args):
         entity_dict = {}
         for arg, types in args.items():
@@ -13,7 +13,6 @@ class QuestionPaser:
         return entity_dict
 
     '''解析主函数'''
-
     def parser_main(self, res_classify):
         args = res_classify['args']
         entity_dict = self.build_entitydict(args)
@@ -32,14 +31,13 @@ class QuestionPaser:
         return sqls
 
     '''针对不同的问题，分开进行处理'''
-
     def sql_transfer(self, question_type, entities):
         if not entities:
             return []
 
         # 查询语句
         sql = []
-        #print('你所询问的类型是：', question_type)
+        # print('你所询问的类型是：', question_type)
         # 查询包含关系
         if question_type == 'contain':
             sql = ["MATCH (m)-[r:包含]->(n) where m.name = '{0}' return m.name, n.name".format(i) for i in entities]
@@ -61,19 +59,18 @@ class QuestionPaser:
         # 查询由组成关系
         elif question_type == 'compose':
             sql = ["MATCH (m)-[r:由组成]->(n) where m.name = '{0}' return m.name, n.name".format(i) for i in entities]
-
+        
         # 查询习题关系
         elif question_type == 'exercise':
-            sql = ["MATCH (m)-[r:习题]->(n) where m.name = '{0}' return m.name, n.name".format(i) for i in entities]
+            sql = ["MATCH (m)-[r:习题]->(n) where m.name = '{0}' return m.name, n.name".format(i) for i in entities]        
 
-            # 查询某名词的实现手段
+        # 查询某名词的实现手段
         elif question_type == 'realize':
             sql = ["MATCH (m)-[r:实现]->(n) where m.name = '{0}' return m.name, n.name".format(i) for i in entities]
 
         # 查询某名词的定义
         elif question_type == 'define':
-            sql = ["MATCH (m) where m.name = '{0}' and exists(m.被定义为) return m.name, m.被定义为".format(i) for i in
-                   entities]
+           sql = ["MATCH (m) where m.name = '{0}' and exists(m.被定义为) return m.name, m.被定义为".format(i) for i in entities]
 
         # 查询某名词的内容是什么
         elif question_type == 'content':
@@ -110,12 +107,13 @@ class QuestionPaser:
         # 查询某名词的创建者
         elif question_type == 'creator':
             sql = ["MATCH (m) where m.name = '{0}' return m.name, m.创建者".format(i) for i in entities]
-
+        
         # 查询某名词的链接
         elif question_type == 'link':
             sql = ["MATCH (m) where m.name = '{0}' return m.name, m.链接".format(i) for i in entities]
 
         return sql
+
 
 
 if __name__ == '__main__':

@@ -1,3 +1,7 @@
+# coding: utf-8
+# File: chatbot.py
+# Date: 24-03-18
+
 from question_classifier import *
 from question_parser import *
 from answer_search import *
